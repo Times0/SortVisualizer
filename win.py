@@ -3,6 +3,7 @@ import time
 
 import pygame.sprite
 from constants import *
+from colour import Color
 
 
 class Win:
@@ -11,14 +12,13 @@ class Win:
         self.win = win
         self.s_list = list()
         self.color = WHITE
-        self.init_list(50)
+        self.init_list(100)
 
     def run(self):
         clock = pygame.time.Clock()
         moves = quicksort(self.s_list)
-        print(len(moves))
         i = 0
-
+        print(len(moves))
         while self.game_is_on:
             self.win.fill(BLACK)
             dt = clock.tick(FPS)
@@ -33,18 +33,23 @@ class Win:
             self.draw(self.win)
 
     def draw(self, win):
+        n = len(self.s_list)
+        start = Color("red")
+
+        grad = list(start.range_to(Color("purple"), n + 1))
+
         BOT = 700
         LEFT = 60
         RIGHT = 1400
         max_height = 500
-        n = len(self.s_list)
         for i, l in enumerate(self.s_list):
             L = l * max_height / len(self.s_list)
             left = LEFT + i * (RIGHT - LEFT) / n
             top = BOT - L
             width = (RIGHT - LEFT) / n - 1
             height = L
-            pygame.draw.rect(win, self.color, [left, top, width, height])
+            r, g, b = grad[l].rgb[0] * 255, grad[l].rgb[1] * 255, grad[l].rgb[2] * 255
+            pygame.draw.rect(win, (r, g, b), [left, top, width, height])
         pygame.display.flip()
 
     def init_list(self, n):
