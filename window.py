@@ -52,7 +52,6 @@ class Sorter:
     def run(self):
         clock = pygame.time.Clock()
         while self.game_is_on:
-            self.win.fill(pygame.Color(33, 37, 43))
             clock.tick(FPS)
             events = pygame.event.get()
             for event in events:
@@ -73,6 +72,7 @@ class Sorter:
             self.draw(self.win)
 
     def draw(self, win):
+        self.win.fill(pygame.Color("black"))
         n = len(self.the_list_to_sort)
         BOT = 700
         LEFT = 60
