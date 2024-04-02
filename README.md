@@ -1,4 +1,5 @@
 <!-- SortVisualizer, Sort Visualizer, Sorting algorithm visualisation with a pygame interface  -->
+[demo_2_.webm](https://github.com/Times0/SortVisualizer/assets/45049767/72bd7b4f-4bfd-455f-ba4d-6f2873ba3c41)
 
 
 <!-- PROJECT LOGO -->
